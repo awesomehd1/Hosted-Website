@@ -1,5 +1,17 @@
 <?php
-if($_POST["message"]) {
-    mail("your@email.address", "Form to email message", $_POST["message"], "From: an@email.address");
+
+if($_POST["submit"]) {
+    $recipient="your@email.address";
+    $subject="Bug report for mc hosting";
+    $sender=$_POST["sender"];
+    $senderEmail=$_POST["senderEmail"];
+    $message=$_POST["message"];
+
+    $mailBody="Name: $sender\nEmail: $senderEmail\n\n$message";
+
+    mail($recipient, $subject, $mailBody, "From: $sender <$senderEmail>");
+
+    $thankYou="<p>Thank you! Your message has been sent.</p>";
 }
+
 ?>
